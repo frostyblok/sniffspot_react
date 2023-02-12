@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import '../custom.scss'
-import Spot from "./Spot";
 import axios from "axios";
 import Spots from "./Spots";
 
@@ -15,7 +14,7 @@ class Home extends Component {
     }
 
     processGetAxiosCall = async () => {
-        axios.get('http://localhost:8080/spots')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/spots`)
             .then(res => {
                 this.setState({ spots: res.data });
             })

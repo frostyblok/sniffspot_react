@@ -58,7 +58,7 @@ class Reviews extends Component {
     }
 
     processPostAxiosCall = (params) => {
-        axios.post(`http://localhost:8080/spots/${this.state.spotId}/reviews`, params)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/spots/${this.state.spotId}/reviews`, params)
             .then(res => {
                 if (res.status == 201) {
                 }
@@ -70,7 +70,7 @@ class Reviews extends Component {
     }
 
     processGetAxiosCall = async () => {
-        axios.get( `http://localhost:8080/spots/${this.state.spotId}/reviews`)
+        axios.get( `${process.env.REACT_APP_BACKEND_URL}/spots/${this.state.spotId}/reviews`)
             .then(res => {
                 if (res.status == 200) {
                     this.setState({ comments: res.data['reviews'], averageRating: res.data['average_ratings'] });

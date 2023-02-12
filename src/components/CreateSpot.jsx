@@ -38,7 +38,7 @@ class CreateSpot extends Component {
     }
 
     processPostAxiosCall = (params) => {
-        axios.post('http://localhost:8080/spots', params)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/spots`, params)
             .then(res => {
                 if (res.status == 201) {
                     this.props.history.push({ pathname: '/', state: { spots: res.data } });
