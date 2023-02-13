@@ -1,7 +1,10 @@
 import Rater from "react-rater";
+import { format } from "fecha";
 
 function Comment({ comment }) {
-    const { rating, content } = comment;
+    const { rating, content, created_at } = comment;
+    const commentDate = new Date(created_at)
+    console.log(commentDate)
    return (
        <div className="row bg-white p-3 shadow mb-3">
            <div className="col-5 col-sm-2">
@@ -22,7 +25,7 @@ function Comment({ comment }) {
                    </div>
                    <div className="col-12 col-sm-3">
                        <div className="ml-sm-3">
-                           <span className="text-muted">15 Oct'20</span>
+                           <span className="text-muted">{format(commentDate, "MMMM Do, YYYY")}</span>
                        </div>
                    </div>
                </div>
