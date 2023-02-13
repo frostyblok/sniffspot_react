@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import '../custom.scss'
 import axios from "axios";
 import Spots from "./Spots";
+import {Link} from "react-router-dom";
 
 
 class Home extends Component {
@@ -55,8 +56,9 @@ class Home extends Component {
                         <div className="hero-content">
                             <h1>Rent safe and private dog parks hosted by locals in Seattle, Washington</h1>
                             <p>Sniffspot's private dog parks are the best way to exercise your dog. We have the best variety and the best priced dog parks anywhere!</p>
-                            <button type="button" className="btn explore-button">Become a Host
-                            </button>
+                            <Link to={"/create-spot"}>
+                                <button type="button" className="btn explore-button">Become a Host</button>
+                            </Link>
                         </div>
                     </div>
                 </section>

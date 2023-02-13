@@ -54,13 +54,14 @@ class Reviews extends Component {
         data.append('spot_id', spotId)
 
         this.setState({ show: false })
-        this.processPostAxiosCall(data)
+        await this.processPostAxiosCall(data)
     }
 
-    processPostAxiosCall = (params) => {
+    processPostAxiosCall = async (params) => {
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/spots/${this.state.spotId}/reviews`, params)
             .then(res => {
                 if (res.status == 201) {
+                    this.setState({ comments: res.data['reviews'], averageRating: res.data['average_ratings'] });
                 }
             })
             .catch(({message}) => {
@@ -93,7 +94,7 @@ class Reviews extends Component {
                     </div>
                     <div className="mt-5">
                         <Button variant="primary" onClick={this.handleShow}>
-                            Launch demo modal
+                            Add Review
                         </Button>
 
                         <Modal show={this.state.show} onHide={this.handleClose}>

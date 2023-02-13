@@ -27,6 +27,13 @@ class CreateSpot extends Component {
     createSpot = async () => {
         this.setState({ loading: true })
         const { title, description, price, imageList } = this.state;
+
+        if(title.trim()=="" || description.trim() =="" || price.trim() ==""){
+            alert("All fields in * are required");
+            this.setState({ loading: false })
+            return;
+        }
+
         const data = new FormData();
         for (var i = 0; i < imageList.length; i++) {
             data.append('images[]', imageList[i]);
@@ -47,9 +54,8 @@ class CreateSpot extends Component {
             .catch(({message}) => {
                 console.log(message)
                 alert('There was an error while saving data')
+                this.setState({ loading: false })
             })
-
-        this.setState({ loading: false })
     }
 
     render() {
